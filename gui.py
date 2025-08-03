@@ -3,12 +3,32 @@ import os
 import FreeSimpleGUI as sg  
 from datetime import datetime
 
+# To rebuild your To-Do app executable with PyInstaller, you should use the following command:
+#-> pyinstaller --onefile --windowed --clean gui.py
+# Here's what each option means:
+#  --onefile (not --oneline): Packages your app as a single executable file, making distribution easier.
+#  --windowed: Ensures that no command line console window appears when your GUI app runs (recommended for GUI apps).
+#  --clean: Cleans the PyInstaller cache and removes temporary files before building (a good practice after changing source code, especially file paths).
+
+
 # ============================
 # File Paths for Data Persistence
 # ============================
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FILEPATH_TODO = os.path.join(BASE_DIR, "todo_list.txt")
-FILEPATH_COMPLETED_TODO = os.path.join(BASE_DIR, "completed_todo_list.txt")
+r"""
+This code creates a hidden folder named .todo_app inside the current user's home directory 
+(e.g., C:\Users\Username on Windows or /home/username on Linux/macOS) to store application data files. 
+It ensures the folder exists using os.makedirs with exist_ok=True, which avoids errors if the folder is already present. 
+The two file paths defined within this folder (todo_list.txt and completed_todo_list.txt) are used to persist the user's to-do data 
+safely and reliably across program runs, regardless of where the program or executable is launched from.
+"""
+
+# Use the user's home directory with a .todo_app subfolder
+APPDATA_DIR = os.path.join(os.path.expanduser("~"), ".todo_app")
+os.makedirs(APPDATA_DIR, exist_ok=True)  # Ensure the directory exists
+
+FILEPATH_TODO = os.path.join(APPDATA_DIR, "todo_list.txt")
+FILEPATH_COMPLETED_TODO = os.path.join(APPDATA_DIR, "completed_todo_list.txt")
+
 
 # Create file if it does not exist, empty
 if not os.path.isfile(FILEPATH_TODO):

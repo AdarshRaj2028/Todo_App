@@ -1,9 +1,19 @@
 import os
 import time
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-FILEPATH_TODO = os.path.join(BASE_DIR, "todo_list.txt")
-FILEPATH_COMPLETED_TODO = os.path.join(BASE_DIR, "completed_todo_list.txt")
+r"""
+Below code creates a hidden folder named .todo_app inside the current user's home directory 
+(e.g., C:\Users\Username on Windows or /home/username on Linux/macOS) to store application data files. 
+It ensures the folder exists using os.makedirs with exist_ok=True, which avoids errors if the folder is already present. 
+The two file paths defined within this folder (todo_list.txt and completed_todo_list.txt) are used to persist the user's to-do data 
+safely and reliably across program runs, regardless of where the program or executable is launched from.
+"""
+# Use the user's home directory with a .todo_app subfolder
+APPDATA_DIR = os.path.join(os.path.expanduser("~"), ".todo_app")
+os.makedirs(APPDATA_DIR, exist_ok=True)  # Ensure the directory exists
+
+FILEPATH_TODO = os.path.join(APPDATA_DIR, "todo_list.txt")
+FILEPATH_COMPLETED_TODO = os.path.join(APPDATA_DIR, "completed_todo_list.txt")
 
 # =========================
 # Todo App Functions
@@ -48,7 +58,7 @@ def add(user_input: str, todo_list: list, filepath=FILEPATH_TODO) -> None:
         f.write(todo_with_date + "\n")
 
 
-def remove(index: int, todo_list: list, filepath=FILEPATH_TODO):
+def remove(index: int, todo_list: list, filepath=FILEPATH_TODO) -> None:
     """Remove todo at specified index and update file."""
     todo_list.pop(index)
 
