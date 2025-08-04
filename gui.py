@@ -130,7 +130,7 @@ last_completed = list(completed_todo_list)
 
 # Function references to reload todos externally
 read_todos = functions.load_todos(filepath=FILEPATH_TODO)
-read_comp_todos = functions.load_comp_todos(filepath2=FILEPATH_COMPLETED_TODO)
+read_comp_todos = functions.load_todos(filepath=FILEPATH_COMPLETED_TODO)
 
 # ============================
 # Main Event Loop

@@ -34,7 +34,7 @@ def main(filepath=FILEPATH_TODO, filepath2=FILEPATH_COMPLETED_TODO):
     Main loop: handles user input and calls the appropriate functions.
     """
     todo_list = functions.load_todos(filepath)
-    completed_todo_list = functions.load_comp_todos(filepath2)
+    completed_todo_list = functions.load_todos(filepath2)
     
     # Load existing todos from files into Python lists at program startup
     # These lines are essential for converting file contents into Python lists

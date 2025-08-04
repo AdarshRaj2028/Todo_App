@@ -23,7 +23,7 @@ FILEPATH_COMPLETED_TODO = os.path.join(APPDATA_DIR, "completed_todo_list.txt")
 MAX_TODO_LENGTH = 200  # Maximum length allowed for a todo item
 
 
-def load_todos(filepath):
+def load_todos(filepath): # This can be used to load both todo list and completed todo list
     """Load todo items from a file, ignoring empty lines."""
     with open(filepath, "r", encoding="utf-8") as file:
         return [line.strip() for line in file if line.strip()]
@@ -34,13 +34,6 @@ def save_todos(filepath, todo_list):
     with open(filepath, "w", encoding="utf-8") as file:
         for todo in todo_list:
             file.write(todo + '\n')
-
-
-def load_comp_todos(filepath2):
-    """Load completed todo items from a file, ignoring empty lines."""
-    with open(filepath2, "r", encoding="utf-8") as file:
-        return [line.strip() for line in file if line.strip()]
-
 
 def save_comp_todos(filepath2, completed_todo_list):
     """Save the list of completed todos to a file."""
