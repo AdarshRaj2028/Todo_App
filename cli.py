@@ -1,8 +1,24 @@
 import datetime
 import functions
+import os
 
-FILEPATH_TODO = "Todo_App_Project_1/main/todo_list.txt"
-FILEPATH_COMPLETED_TODO = "Todo_App_Project_1/main/completed_todo_list.txt"
+# Use the user's home directory with a .todo_app subfolder
+APPDATA_DIR = os.path.join(os.path.expanduser("~"), ".todo_app")
+os.makedirs(APPDATA_DIR, exist_ok=True)  # Ensure the directory exists
+
+FILEPATH_TODO = os.path.join(APPDATA_DIR, "todo_list.txt")
+FILEPATH_COMPLETED_TODO = os.path.join(APPDATA_DIR, "completed_todo_list.txt")
+
+
+# Create file if it does not exist, empty
+if not os.path.isfile(FILEPATH_TODO):
+    with open(FILEPATH_TODO, 'w', encoding='utf-8'):
+        pass
+
+if not os.path.isfile(FILEPATH_COMPLETED_TODO):
+    with open(FILEPATH_COMPLETED_TODO, 'w', encoding='utf-8'):
+        pass
+
 # =========================
 #   Main Program Loop
 # =========================
@@ -17,31 +33,23 @@ def main(filepath=FILEPATH_TODO, filepath2=FILEPATH_COMPLETED_TODO):
     """
     Main loop: handles user input and calls the appropriate functions.
     """
-    todo_list = []
-    completed_todo_list = []
+    todo_list = functions.load_todos(filepath)
+    completed_todo_list = functions.load_comp_todos(filepath2)
     
-    # Ensure files exist - create if they don't, do nothing if they do
-    # Using 'a' mode only creates if file doesn't exist, won't overwrite existing content
-    with open(filepath, "a", encoding="utf-8") as f:
-        pass
-    
-    with open(filepath2, "a", encoding="utf-8") as f:
-        pass
-
     # Load existing todos from files into Python lists at program startup
     # These lines are essential for converting file contents into Python lists
     # Without them, lists would not be populated and app wouldn't remember previous todos
     
     # Read all non-empty lines from todo file and create list
     # line.strip() ensures only non-empty, meaningful lines are added
-    with open(filepath, 'r', encoding='utf-8') as f:  
-        todo_list = [line.strip() for line in f if line.strip()]
+    # with open(filepath, 'r', encoding='utf-8') as f:  
+    #     todo_list = [line.strip() for line in f if line.strip()]
     
     # Create list of all non-empty, trimmed completed todos from file
     # Could also use readlines() but list comprehension is more pythonic
     # readlines() is more general-purpose but less concise than list comprehension
-    with open(filepath2, 'r', encoding='utf-8') as f:
-        completed_todo_list = [line.strip() for line in f if line.strip()]
+    # with open(filepath2, 'r', encoding='utf-8') as f:
+    #     completed_todo_list = [line.strip() for line in f if line.strip()]
 
     # Define command aliases for better organization and maintainability
     ADD_COMMANDS: list[str] = ["add", "1"]
