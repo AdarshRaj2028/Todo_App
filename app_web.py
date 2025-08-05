@@ -1,7 +1,5 @@
 # ───────────────────────────────────────────────────────────────────────────
 # 📒  QUICK-REFERENCE COMMENTS FOR THE HTML + CSS USED IN THIS FILE
-#      • Paste these comments anywhere in your script (top or bottom) for
-#        future study—they do NOT change the behaviour of the app.
 # ───────────────────────────────────────────────────────────────────────────
 #
 # ╭──────────────────────── 1. BASIC HTML IN STREAMLIT ─────────────────────╮
@@ -97,7 +95,7 @@ def clear_completed_todos() -> None:
     """Erase the completed-todos file and refresh the app."""
     completed_list = functions.load_todos(FILEPATH_COMPLETED)
     functions.clear_completed(completed_list, FILEPATH_COMPLETED)
-    st.rerun()  # OK here because this function is called via st.button (on_click)
+    # st.rerun()  # OK here because this function is called via st.button (on_click)
 
 
 # -------- PAGE CONFIG ------------------------------------------------------
@@ -115,15 +113,15 @@ st.markdown(
     .main-header        { text-align:center; color:#1f77b4; margin-bottom:2rem; }
     .subtitle           { text-align:center; color:#666;    margin-bottom:3rem; }
 
-    .todo-container     { background-color:#f8f9fa; padding:1rem; border-radius:10px;
+    /* ▼ JUST THESE TWO LINES CHANGED ▼ */
+    .todo-container     { background-color:#ffffff; padding:1rem; border-radius:10px;
                           border:1px solid #e9ecef; margin-bottom:1rem; }
-    .completed-container{ background-color:#f1f8e9; padding:1rem; border-radius:10px;
+    .completed-container{ background-color:#ffffff; padding:1rem; border-radius:10px;
                           border:1px solid #c8e6c9; margin-bottom:1rem; }
+    /* ▲ NOW BOTH BOXES BLEND WITH THE PAGE BACKGROUND ▲ */
 
-    /* round the Streamlit text-input field */
     .stTextInput > div > div > input { border-radius:20px; }
 
-    /* gradient pill-style buttons */
     .stButton > button {
         border-radius:20px; border:none;
         background:linear-gradient(90deg,#1f77b4,#17a2b8); color:white;
