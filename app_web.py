@@ -28,7 +28,7 @@ def add_todo():
 # Center aligned header
 st.markdown("""
     <h1 style='text-align: center;'>📋 My Todo App</h1>
-    <h4 style='text-align: center; color: gray;'>Use to increase your productivity.</h4>
+    <h4 style='text-align: center; color: gray;'>A minimalistic todo app to increase your productivity.</h4>
 """, unsafe_allow_html=True)
 
 if "processed_indices" not in st.session_state:
