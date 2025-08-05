@@ -113,12 +113,10 @@ st.markdown(
     .main-header        { text-align:center; color:#1f77b4; margin-bottom:2rem; }
     .subtitle           { text-align:center; color:#666;    margin-bottom:3rem; }
 
-    /* ▼ JUST THESE TWO LINES CHANGED ▼ */
     .todo-container     { background-color:#ffffff; padding:1rem; border-radius:10px;
                           border:1px solid #e9ecef; margin-bottom:1rem; }
     .completed-container{ background-color:#ffffff; padding:1rem; border-radius:10px;
                           border:1px solid #c8e6c9; margin-bottom:1rem; }
-    /* ▲ NOW BOTH BOXES BLEND WITH THE PAGE BACKGROUND ▲ */
 
     .stTextInput > div > div > input { border-radius:20px; }
 
