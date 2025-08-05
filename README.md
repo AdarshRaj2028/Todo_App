@@ -4,13 +4,13 @@ A comprehensive todo application built in Python featuring three different user 
 
 ## 🏗️ Project Structure
 
-Todo_App/
-├── cli.py # Command line interface
-├── gui.py # Desktop GUI application
-├── app_web.py # Web interface
-├── functions.py # Shared core functions
-├── requirements.txt # Project dependencies
-└── README.md # Project documentation
+Todo_App/<br>
+├── cli.py # Command line interface<br>
+├── gui.py # Desktop GUI application<br>
+├── app_web.py # Web interface<br>
+├── functions.py # Shared core functions<br>
+├── requirements.txt # Project dependencies<br>
+└── README.md # Project documentation<br>
 
 ## 🌟 Features
 
